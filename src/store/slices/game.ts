@@ -1,11 +1,20 @@
 /* eslint-disable no-param-reassign */
 import { createSlice } from '@reduxjs/toolkit'
+import AnswerOption from '../../types/AnswerOption'
+import Question from '../../types/Question'
 
-const initialState = {
+type GameState = {
+  questions: Question[]
+  error: null | string
+  scoreRewards: number[]
+  currentQuestionIndex: number
+}
+
+const initialState: GameState = {
   questions: [],
   error: null,
-  score: 0, // todo
-  currentQuectionsIndex: 0,
+  scoreRewards: [],
+  currentQuestionIndex: 0,
 }
 
 const gameSlice = createSlice({
@@ -14,19 +23,22 @@ const gameSlice = createSlice({
   reducers: {
     fetchQuestionsSuccess(state, action) {
       state.questions = action.payload
-      state.score = 0
-      state.currentQuectionsIndex = 0
+      const availableRewards = action.payload.map(
+        (item: AnswerOption, index: number) => index * 500
+      )
+      state.scoreRewards = availableRewards
+      state.currentQuestionIndex = 5
     },
     fetchQuestionsFail(state, action) {
       state.error = action.payload
     },
-    answerQuestion(state, action) {
-      const currentQuestion = state.questions[state.currentQuectionsIndex]
-      state.score +=
-        action.payload.answer === currentQuestion.correct_answer ? 1 : 0
-    },
-    nextQuestion(state, action) {
-      state.currentQuectionsIndex += 1
+    // answerQuestion(state, action) {
+    //   const currentQuestion = state.questions[state.currentQuestionIndex]
+    //   state.score +=
+    //     action.payload.answer === currentQuestion.correct_answer ? 1 : 0
+    // },
+    nextQuestion(state) {
+      state.currentQuestionIndex += 1
     },
   },
 })
@@ -34,7 +46,7 @@ const gameSlice = createSlice({
 export const {
   fetchQuestionsSuccess,
   fetchQuestionsFail,
-  answerQuestion,
+  // answerQuestion,
   nextQuestion,
 } = gameSlice.actions
 

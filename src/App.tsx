@@ -18,6 +18,9 @@ function App() {
     case GameStage.FetchingGame:
       displayedComponent = <Game />
       break
+    case GameStage.Game:
+      displayedComponent = <Game />
+      break
     case GameStage.FinishGame:
       displayedComponent = <FinishGame />
       break

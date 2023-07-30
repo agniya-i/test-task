@@ -1,17 +1,16 @@
 import React, { FC } from 'react'
 import styles from './ScoreTable.module.scss'
 import ScoreItem from '../ScoreItem'
-import { IScoreItem } from '../../types/tyles'
 
 type Props = {
-  scoreItems: IScoreItem[]
+  scoreRewards: number[]
 }
 
-const ScoreTable: FC<Props> = ({ scoreItems }) => {
+const ScoreTable: FC<Props> = ({ scoreRewards }) => {
   return (
     <div className={styles.scoreTable}>
-      {scoreItems.map((item) => (
-        <ScoreItem key={item.label} label={item.label} active={false} />
+      {scoreRewards.map((item, index) => (
+        <ScoreItem key={item} index={index} label={item} />
       ))}
     </div>
   )
