@@ -1,11 +1,15 @@
 import React from 'react'
+import { useDispatch } from 'react-redux'
+
 import styles from './Main.module.scss'
 import pageImage from '../../assets/page-image.png'
 import Button from '../../components/Button'
+import { startGame } from '../../store/slices/gameInit'
 
 function Main() {
+  const dispatch = useDispatch()
   const handleClick = () => {
-    console.log('start')
+    dispatch(startGame())
   }
 
   return (

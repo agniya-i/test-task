@@ -2,7 +2,7 @@ import React, { FC } from 'react'
 import styles from './ScoreItem.module.scss'
 
 type Props = {
-  label: string
+  label: number
   active: boolean
 }
 

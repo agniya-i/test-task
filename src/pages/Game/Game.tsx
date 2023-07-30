@@ -1,7 +1,5 @@
 import React from 'react'
-import styles from './Main.module.scss'
-import pageImage from '../../assets/page-image.png'
-import Button from '../../components/Button'
+import styles from './Game.module.scss'
 import ScoreTable from '../../components/ScoreTable'
 import { IScoreItem } from '../../types/tyles'
 
@@ -11,8 +9,8 @@ const Game = () => {
   return (
     <div className={styles.wrapper}>
       <div className={styles.content}>
-        <h3 className={styles.contentTitle}></h3>
-        <div className={styles.answersList}></div>
+        <h3 className={styles.contentTitle}>Game</h3>
+        <div className={styles.answersList}>Hello</div>
       </div>
       <ScoreTable scoreItems={AVAILABLE_SCORES_TEST} />
     </div>
