@@ -1,7 +1,7 @@
 /* eslint-disable no-param-reassign */
 import { createSlice } from '@reduxjs/toolkit'
 import GameStage from '../../types/GameStage'
-import { fetchQuestionsSuccess, fetchQuestionsFail } from './game'
+import { fetchQuestionsSuccess, fetchQuestionsFail, failGame } from './game'
 
 const initialState = {
   stage: GameStage.StartGame,
@@ -25,6 +25,9 @@ const gameStage = createSlice({
       })
       .addCase(fetchQuestionsFail, (state) => {
         state.stage = GameStage.StartGame
+      })
+      .addCase(failGame, (state) => {
+        state.stage = GameStage.FinishGame
       })
   },
 })

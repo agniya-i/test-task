@@ -1,6 +1,5 @@
 import React, { FC } from 'react'
 import classNames from 'classnames'
-
 import styles from './OptionItem.module.scss'
 import AnswerOption from '../../types/AnswerOption'
 
@@ -26,7 +25,7 @@ const OptionItem: FC<Props> = ({
       className={classNames(styles.optionItem, {
         [styles.isSelected]: isSelected,
         [styles.isCorrect]: isCorrect,
-        [styles.isWrong]: !isCorrect,
+        [styles.isWrong]: isCorrect === false,
       })}
     >
       <svg

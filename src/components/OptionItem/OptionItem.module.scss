@@ -12,7 +12,7 @@
     content: '';
     display: block;
     height: 1px;
-    width: 20px;
+    width: $optionAnswerPadding;
     background-color: $primaryGrey;
     transition: background-color 0.3s ease;
   }
@@ -32,6 +32,7 @@
     fill: $primaryWhite;
     stroke: $primaryGrey;
     transition: stroke 0.3s ease-in-out;
+    width: $optionAnswerWidth;
   }
 
   .optionItemLabel {
@@ -61,5 +62,34 @@
   .optionItemShape {
     fill: $lightGreen;
     stroke: $primaryGreen;
+  }
+
+  &:hover {
+    .optionItemShape {
+      stroke: $primaryGreen;
+    }
+
+    &::before,
+    &::after {
+      background-color: $primaryGreen;
+    }
+  }
+}
+
+.isWrong {
+  .optionItemShape {
+    fill: $lightRed;
+    stroke: $primaryRed;
+  }
+
+  &:hover {
+    .optionItemShape {
+      stroke: $primaryRed;
+    }
+
+    &::before,
+    &::after {
+      background-color: $primaryRed;
+    }
   }
 }

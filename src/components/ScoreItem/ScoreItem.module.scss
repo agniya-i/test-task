@@ -4,17 +4,29 @@
   position: relative;
   width: fit-content;
   margin-bottom: 10px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+
+  &::before,
+  &::after {
+    content: '';
+    display: block;
+    height: 1px;
+    width: 69px;
+    background-color: $primaryGrey;
+  }
 
   .scoreItemShape {
     fill: none;
-    stroke: $primaryBlack;
+    stroke: $primaryGrey;
   }
 
   .scoreItemLabel {
     position: absolute;
-    top: 50%;
+    top: 40%;
     left: 50%;
-    transform: translate(-50%, -50%);
+    transform: translate(-50%, -40%);
   }
 }
 
@@ -23,12 +35,17 @@
   & .scoreItemShape {
     stroke: $primaryOrange;
   }
+
+  &::before,
+  &::after {
+    content: '';
+    display: block;
+    height: 1px;
+    width: 69px;
+    background-color: $primaryOrange;
+  }
 }
 
 .isDisabled {
   color: $primaryGrey;
-
-  & .scoreItemShape {
-    stroke: $primaryGrey;
-  }
 }

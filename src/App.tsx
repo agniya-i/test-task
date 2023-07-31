@@ -25,7 +25,7 @@ function App() {
       displayedComponent = <FinishGame />
       break
     default:
-      throw new Error('Unknown type')
+      break
   }
 
   return <div className="App">{displayedComponent}</div>

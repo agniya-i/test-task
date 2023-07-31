@@ -24,7 +24,7 @@ const ScoreItem: FC<Props> = ({ label, index }) => {
     >
       <svg
         width="240"
-        height="40"
+        height="41"
         viewBox="0 0 240 40"
         xmlns="http://www.w3.org/2000/svg"
         className={styles.scoreItemShape}

@@ -1,5 +1,7 @@
+@import '../../styles/variables.scss';
+
 .optionsList {
   display: flex;
   flex-wrap: wrap;
-  width: 1000px;
+  width: calc($optionAnswerWidth * 2 + $optionAnswerPadding * 4);
 }

@@ -6,10 +6,13 @@ import ScoreTable from '../../components/ScoreTable'
 import questionFromServer from '../../api/questions.json'
 import {
   fetchQuestionsSuccess,
-  answerQuestion,
+  // answerQuestion,
   nextQuestion,
+  answerAndCheck,
+  fetchQuestionsFail,
+  failGame,
 } from '../../store/slices/game'
-import { finishGame } from '../../store/slices/gameInit'
+// import { finishGame } from '../../store/slices/gameInit'
 import { IRootState, AppDispatch } from '../../store'
 import OptionsList from '../../components/OptionsList'
 
@@ -20,19 +23,26 @@ const Game = () => {
   )
 
   useEffect(() => {
-    dispatch(fetchQuestionsSuccess(questionFromServer))
+    if (questionFromServer && questionFromServer.length) {
+      dispatch(fetchQuestionsSuccess(questionFromServer))
+    } else {
+      dispatch(fetchQuestionsFail(''))
+    }
   }, [])
 
   const handleCheckAnswer = async (id: number) => {
-    dispatch(answerQuestion({ id }))
+    dispatch(answerAndCheck({ id }))
 
     setTimeout(() => {
-      if (questions[currentQuestionIndex].correct_answers_ids.includes(id)) {
-        dispatch(nextQuestion())
+      if (
+        !questions[currentQuestionIndex].correct_answers_ids.includes(id) ||
+        currentQuestionIndex > questions.length - 1
+      ) {
+        dispatch(failGame())
       } else {
-        dispatch(finishGame())
+        dispatch(nextQuestion())
       }
-    }, 1000)
+    }, 1500)
   }
 
   return (

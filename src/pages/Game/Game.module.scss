@@ -1,7 +1,10 @@
+@import '../../styles/variables.scss';
+
 .wrapper {
   display: flex;
   justify-content: space-between;
   height: 100vh;
+  background-color: $lightGrey;
 
   .content {
     padding-left: 80px;
