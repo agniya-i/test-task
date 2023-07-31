@@ -8,6 +8,8 @@ type GameState = {
   error: null | string
   scoreRewards: number[]
   currentQuestionIndex: number
+  selectedAnswer: number | null
+  isSelectedAnswerCorrect: boolean | null
 }
 
 const initialState: GameState = {
@@ -15,6 +17,8 @@ const initialState: GameState = {
   error: null,
   scoreRewards: [],
   currentQuestionIndex: 0,
+  selectedAnswer: null,
+  isSelectedAnswerCorrect: null,
 }
 
 const gameSlice = createSlice({
@@ -32,12 +36,17 @@ const gameSlice = createSlice({
     fetchQuestionsFail(state, action) {
       state.error = action.payload
     },
-    // answerQuestion(state, action) {
-    //   const currentQuestion = state.questions[state.currentQuestionIndex]
-    //   state.score +=
-    //     action.payload.answer === currentQuestion.correct_answer ? 1 : 0
-    // },
+    answerQuestion(state, action) {
+      const currentQuestion = state.questions[state.currentQuestionIndex]
+      const { id } = action.payload
+      state.selectedAnswer = id
+      state.isSelectedAnswerCorrect =
+        currentQuestion.correct_answers_ids.includes(id)
+    },
     nextQuestion(state) {
+      state.selectedAnswer = null
+      state.isSelectedAnswerCorrect = null
+
       state.currentQuestionIndex += 1
     },
   },
@@ -46,7 +55,7 @@ const gameSlice = createSlice({
 export const {
   fetchQuestionsSuccess,
   fetchQuestionsFail,
-  // answerQuestion,
+  answerQuestion,
   nextQuestion,
 } = gameSlice.actions
 

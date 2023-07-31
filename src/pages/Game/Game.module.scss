@@ -2,6 +2,15 @@
   display: flex;
   justify-content: space-between;
   height: 100vh;
+
   .content {
+    padding-left: 80px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+
+    .contentTitle {
+      font-size: 32px;
+    }
   }
 }

@@ -8,7 +8,8 @@ import { startGame } from '../../store/slices/gameInit'
 
 function Main() {
   const dispatch = useDispatch()
-  const handleClick = () => {
+
+  const handleStartClick = () => {
     dispatch(startGame())
   }
 
@@ -20,7 +21,7 @@ function Main() {
           <h2 className={styles.contentDescriptionTitle}>
             Who wants to be a millionaire?
           </h2>
-          <Button label="Start" onClick={handleClick} />
+          <Button label="Start" onClick={handleStartClick} />
         </div>
       </div>
     </div>

@@ -1,0 +1,65 @@
+@import '../../styles/variables.scss';
+
+.optionItem {
+  position: relative;
+  width: fit-content;
+  margin-bottom: 10px;
+  display: flex;
+  align-items: center;
+
+  &::before,
+  &::after {
+    content: '';
+    display: block;
+    height: 1px;
+    width: 20px;
+    background-color: $primaryGrey;
+    transition: background-color 0.3s ease;
+  }
+
+  &:hover {
+    .optionItemShape {
+      stroke: $primaryOrange;
+    }
+
+    &::before,
+    &::after {
+      background-color: $primaryOrange;
+    }
+  }
+
+  .optionItemShape {
+    fill: $primaryWhite;
+    stroke: $primaryGrey;
+    transition: stroke 0.3s ease-in-out;
+  }
+
+  .optionItemLabel {
+    position: absolute;
+    top: 50%;
+    transform: translate(0, -50%);
+    font-size: 20px;
+    padding: 0 50px;
+
+    .optionItemLabelLetter {
+      text-transform: capitalize;
+      font-weight: 600;
+      color: $primaryOrange;
+      margin-right: 10px;
+    }
+  }
+}
+
+.isSelected {
+  .optionItemShape {
+    fill: $lightOrange;
+    stroke: $primaryOrange;
+  }
+}
+
+.isCorrect {
+  .optionItemShape {
+    fill: $lightGreen;
+    stroke: $primaryGreen;
+  }
+}
