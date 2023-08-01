@@ -1,7 +1,12 @@
 @import '../../styles/variables.scss';
+@import '../../styles/mixins.scss';
 
 .optionsList {
   display: flex;
   flex-wrap: wrap;
-  width: calc($optionAnswerWidth * 2 + $optionAnswerPadding * 4);
+  width: 100%;
+
+  @include onDesktop {
+    width: calc($optionAnswerWidth * 2 + $optionAnswerPadding * 4);
+  }
 }

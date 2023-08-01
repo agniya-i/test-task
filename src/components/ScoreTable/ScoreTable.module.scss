@@ -1,8 +1,63 @@
 @import '../../styles/variables.scss';
 
+@import '../../styles/mixins.scss';
+
 .scoreTable {
-  display: flex;
-  flex-direction: column-reverse;
-  justify-content: center;
+  position: absolute;
+  width: 100%;
+
+  @include onDesktop {
+    position: relative;
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    background-color: $primaryWhite;
+    width: fit-content;
+  }
+
+  .scoreTableListContainer {
+    display: none;
+
+    @include onDesktop {
+      display: block !important;
+    }
+  }
+
+  .scoreTableList {
+    background-color: $primaryWhite;
+    display: flex;
+    flex-direction: column-reverse;
+    justify-content: center;
+  }
+
+  .navigation {
+    display: flex;
+    justify-content: flex-end;
+    padding: 1rem;
+
+    @include onDesktop {
+      display: none;
+    }
+
+    .navigationMenuButton {
+      width: 14px;
+      height: 14px;
+      background-image: url(../../assets/MenuIcon.svg);
+      background-position: center;
+      background-repeat: no-repeat;
+    }
+  }
+}
+
+.isOpen {
+  height: 100vh;
   background-color: $primaryWhite;
+
+  .navigation .navigationMenuButton {
+    background-image: url(../../assets/CloseIcon.svg);
+  }
+
+  .scoreTableListContainer {
+    display: block;
+  }
 }

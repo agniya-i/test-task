@@ -20,7 +20,11 @@ const FinishGame = () => {
   return (
     <div className={styles.wrapper}>
       <div className={styles.content}>
-        <img src={pageImage} alt="page" />
+        <img
+          className={styles.contentImage}
+          src={pageImage}
+          alt="Weloome Hand"
+        />
         <div className={styles.contentDescription}>
           <h3 className={styles.contentDescriptionTitle}>Total Score</h3>
           <h2 className={styles.contentDescriptionScore}>

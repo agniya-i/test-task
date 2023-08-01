@@ -6,13 +6,11 @@ import ScoreTable from '../../components/ScoreTable'
 import questionFromServer from '../../api/questions.json'
 import {
   fetchQuestionsSuccess,
-  // answerQuestion,
   nextQuestion,
   answerAndCheck,
   fetchQuestionsFail,
   failGame,
 } from '../../store/slices/game'
-// import { finishGame } from '../../store/slices/gameInit'
 import { IRootState, AppDispatch } from '../../store'
 import OptionsList from '../../components/OptionsList'
 
@@ -60,7 +58,10 @@ const Game = () => {
           </>
         )}
       </div>
-      <ScoreTable scoreRewards={scoreRewards} />
+      <ScoreTable
+        className={styles.scoreRewardsWrapper}
+        scoreRewards={scoreRewards}
+      />
     </div>
   )
 }

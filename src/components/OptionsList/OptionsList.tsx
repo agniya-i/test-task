@@ -30,7 +30,8 @@ const OptionsList: FC<Props> = ({ options, onCheckAnswer }) => {
           <OptionItem
             optionLetter={optionLetters[index]}
             onClick={handleOptionClick}
-            key={option.id}
+            key={option.text}
+            // key={`${currentQuestionIndex}${option.id}`}
             option={option}
             isSelected={isSelected}
             isCorrect={isSelected ? isCorrect : undefined}

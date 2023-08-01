@@ -1,4 +1,5 @@
 @import '../../styles/variables.scss';
+@import '../../styles/mixins.scss';
 
 .button {
   min-width: 296px;
@@ -9,9 +10,13 @@
   cursor: pointer;
   border: 0;
   border-radius: 12px;
-  font-size: 20px;
+  font-size: 15px;
   font-weight: 600;
   transition: background-color 0.3s ease-in-out;
+
+  @include onDesktop {
+    font-size: 20px;
+  }
 
   &:hover {
     background-color: $secondaryOrange;

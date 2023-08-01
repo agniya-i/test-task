@@ -1,8 +1,8 @@
 @import '../../styles/variables.scss';
+@import '../../styles/mixins.scss';
 
 .optionItem {
-  position: relative;
-  width: fit-content;
+  width: 100%;
   margin-bottom: 10px;
   display: flex;
   align-items: center;
@@ -12,9 +12,10 @@
     content: '';
     display: block;
     height: 1px;
-    width: $optionAnswerPadding;
     background-color: $primaryGrey;
     transition: background-color 0.3s ease;
+    flex-grow: 1;
+    flex-shrink: 1;
   }
 
   &:hover {
@@ -28,19 +29,29 @@
     }
   }
 
+  .optionItemContainer {
+    position: relative;
+    height: 73px;
+  }
+
   .optionItemShape {
     fill: $primaryWhite;
     stroke: $primaryGrey;
     transition: stroke 0.3s ease-in-out;
-    width: $optionAnswerWidth;
+    width: $optionAnswerMobileWidth;
+
+    @include onDesktop {
+      width: $optionAnswerWidth;
+    }
   }
 
   .optionItemLabel {
     position: absolute;
     top: 50%;
+    left: 15%;
     transform: translate(0, -50%);
     font-size: 20px;
-    padding: 0 50px;
+    padding: 0;
 
     .optionItemLabelLetter {
       text-transform: capitalize;

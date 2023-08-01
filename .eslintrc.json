@@ -23,6 +23,7 @@
     "@typescript-eslint/comma-dangle": "warn",
     "no-restricted-exports": ["off"],
     "react/function-component-definition": ["off"],
-    "import/no-extraneous-dependencies": ["off"]
+    "import/no-extraneous-dependencies": ["off"],
+    "react/require-default-props": "warn"
   }
 }

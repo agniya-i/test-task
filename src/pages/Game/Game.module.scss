@@ -1,5 +1,5 @@
 @import '../../styles/variables.scss';
-
+@import '../../styles/mixins.scss';
 .wrapper {
   display: flex;
   justify-content: space-between;
@@ -7,13 +7,18 @@
   background-color: $lightGrey;
 
   .content {
-    padding-left: 80px;
     display: flex;
     flex-direction: column;
     justify-content: space-around;
 
     .contentTitle {
-      font-size: 32px;
+      font-size: 18px;
+      text-align: center;
+
+      @include onDesktop {
+        font-size: 32px;
+        text-align: left;
+      }
     }
   }
 }

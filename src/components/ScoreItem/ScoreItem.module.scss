@@ -2,7 +2,7 @@
 
 .scoreItem {
   position: relative;
-  width: fit-content;
+  // width: fit-content;
   margin-bottom: 10px;
   display: flex;
   justify-content: space-between;
@@ -13,13 +13,15 @@
     content: '';
     display: block;
     height: 1px;
-    width: 69px;
+    flex-shrink: 1;
+    flex-grow: 1;
     background-color: $primaryGrey;
   }
 
   .scoreItemShape {
     fill: none;
     stroke: $primaryGrey;
+    flex-basis: $scoreItemWidth;
   }
 
   .scoreItemLabel {
