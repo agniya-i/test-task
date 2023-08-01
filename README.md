@@ -11,7 +11,7 @@ Simple React Quiz Game made with React and Redux
 
 #### Run development version
 
-To run development version please use `npm run dev` command. Server will start on 3000 port. Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+To run development version please use `npm run start` command. Server will start on 3000 port. Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
 
 #### Deploy
 
