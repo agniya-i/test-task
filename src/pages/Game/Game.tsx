@@ -1,9 +1,6 @@
 import React, { useEffect } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
-
-import styles from './Game.module.scss'
-import ScoreTable from '../../components/ScoreTable'
-import questionFromServer from '../../api/questions.json'
+import questionsFromServer from '../../api/questions.json'
 import {
   fetchQuestionsSuccess,
   nextQuestion,
@@ -11,30 +8,33 @@ import {
   fetchQuestionsFail,
   failGame,
 } from '../../store/slices/game'
-import { IRootState, AppDispatch } from '../../store'
+import { RootState, AppDispatch } from '../../store'
 import OptionsList from '../../components/OptionsList'
+import ScoreTable from '../../components/ScoreTable'
+import QuestionError from '../../types/QuestionErorr'
+import styles from './Game.module.scss'
 
 const Game = () => {
   const dispatch = useDispatch<AppDispatch>()
   const { questions, scoreRewards, currentQuestionIndex } = useSelector(
-    (state: IRootState) => state.game
+    (state: RootState) => state.game
   )
 
   useEffect(() => {
-    if (questionFromServer && questionFromServer.length) {
-      dispatch(fetchQuestionsSuccess(questionFromServer))
+    if (questionsFromServer && questionsFromServer.length) {
+      dispatch(fetchQuestionsSuccess(questionsFromServer))
     } else {
-      dispatch(fetchQuestionsFail(''))
+      dispatch(fetchQuestionsFail(QuestionError.Loading))
     }
   }, [])
 
   const handleCheckAnswer = async (id: number) => {
-    dispatch(answerAndCheck({ id }))
+    await dispatch(answerAndCheck({ id }))
 
     setTimeout(() => {
       if (
         !questions[currentQuestionIndex].correct_answers_ids.includes(id) ||
-        currentQuestionIndex > questions.length - 1
+        currentQuestionIndex >= questions.length - 1
       ) {
         dispatch(failGame())
       } else {
@@ -45,9 +45,9 @@ const Game = () => {
 
   return (
     <div className={styles.wrapper}>
-      <div className={styles.content}>
-        {questions.length && (
-          <>
+      {questions && questions.length && (
+        <>
+          <div className={styles.content}>
             <h3 className={styles.contentTitle}>
               {questions[currentQuestionIndex].question}
             </h3>
@@ -55,13 +55,13 @@ const Game = () => {
               onCheckAnswer={handleCheckAnswer}
               options={questions[currentQuestionIndex].answer_options}
             />
-          </>
-        )}
-      </div>
-      <ScoreTable
-        className={styles.scoreRewardsWrapper}
-        scoreRewards={scoreRewards}
-      />
+          </div>
+          <ScoreTable
+            className={styles.scoreRewardsWrapper}
+            scoreRewards={scoreRewards}
+          />
+        </>
+      )}
     </div>
   )
 }

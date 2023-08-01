@@ -11,6 +11,11 @@
     flex-direction: column;
     justify-content: space-around;
 
+    @include onDesktop {
+      width: calc($optionAnswerWidth * 2 + $optionAnswerPadding * 4);
+      padding-left: 50px;
+    }
+
     .contentTitle {
       font-size: 18px;
       text-align: center;

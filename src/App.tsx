@@ -1,6 +1,6 @@
 import React from 'react'
 import { useSelector } from 'react-redux'
-import { IRootState } from './store'
+import { RootState } from './store'
 import './App.css'
 import Main from './pages/Main'
 import Game from './pages/Game'
@@ -8,7 +8,7 @@ import FinishGame from './pages/FinishGame'
 import GameStage from './types/GameStage'
 
 function App() {
-  const currentStage = useSelector((state: IRootState) => state.gameState.stage)
+  const currentStage = useSelector((state: RootState) => state.gameState.stage)
   let displayedComponent
 
   switch (currentStage) {

@@ -1,5 +1,6 @@
+/* eslint-disable no-promise-executor-return */
 /* eslint-disable no-param-reassign */
-import { createSlice } from '@reduxjs/toolkit'
+import { Dispatch, createSlice } from '@reduxjs/toolkit'
 import AnswerOption from '../../types/AnswerOption'
 import Question from '../../types/Question'
 
@@ -31,7 +32,7 @@ const gameSlice = createSlice({
         (item: AnswerOption, index: number) => (index + 1) * 500
       )
       state.scoreRewards = availableRewards
-      state.currentQuestionIndex = 0
+      state.currentQuestionIndex = 11
     },
     fetchQuestionsFail(state, action) {
       state.error = action.payload
@@ -68,14 +69,15 @@ export const {
   failGame,
 } = gameSlice.actions
 
-export const answerAndCheck = (params: any) => async (dispatch: any) => {
-  await dispatch(answerQuestion({ id: params.id }))
-  // eslint-disable-next-line no-promise-executor-return
-  await new Promise((resolve) => setTimeout(resolve, 500))
+const delay = new Promise((resolve) => setTimeout(resolve, 500))
 
-  // eslint-disable-next-line @typescript-eslint/return-await
-  return await dispatch(checkCorrectAnswer({ id: params.id }))
+export const answerAndCheck =
+  (params: { id: number }) => async (dispatch: Dispatch<any>) => {
+    dispatch(answerQuestion({ id: params.id }))
 
-  // return await dispatch(nextQuestion())
-}
+    await delay
+
+    return dispatch(checkCorrectAnswer({ id: params.id }))
+  }
+
 export default gameSlice.reducer

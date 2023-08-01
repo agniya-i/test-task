@@ -1,16 +1,16 @@
 import React from 'react'
 import { useDispatch, useSelector } from 'react-redux'
-import pageImage from '../../assets/page-image.png'
+import pageImage from '../../assets/PageImage.png'
 import Button from '../../components/Button/Button'
-import styles from './FinishGame.module.scss'
-import { IRootState } from '../../store'
+import { RootState } from '../../store'
 import { startGame } from '../../store/slices/gameInit'
+import styles from './FinishGame.module.scss'
 
 const FinishGame = () => {
   const dispatch = useDispatch()
 
   const { scoreRewards, currentQuestionIndex } = useSelector(
-    (state: IRootState) => state.game
+    (state: RootState) => state.game
   )
 
   const handleRestartClick = () => {

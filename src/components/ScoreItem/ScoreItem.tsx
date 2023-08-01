@@ -3,7 +3,7 @@ import classNames from 'classnames'
 import { useSelector } from 'react-redux'
 
 import styles from './ScoreItem.module.scss'
-import { IRootState } from '../../store'
+import { RootState } from '../../store'
 
 type Props = {
   label: number
@@ -11,9 +11,7 @@ type Props = {
 }
 
 const ScoreItem: FC<Props> = ({ label, index }) => {
-  const { currentQuestionIndex } = useSelector(
-    (state: IRootState) => state.game
-  )
+  const { currentQuestionIndex } = useSelector((state: RootState) => state.game)
 
   return (
     <div

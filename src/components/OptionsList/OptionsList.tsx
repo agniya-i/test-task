@@ -1,6 +1,6 @@
 import React, { FC } from 'react'
 import { useSelector } from 'react-redux'
-import { IRootState } from '../../store'
+import { RootState } from '../../store'
 
 import styles from './OptionsList.module.scss'
 import OptionItem from '../OptionItem'
@@ -14,12 +14,8 @@ type Props = {
 
 const OptionsList: FC<Props> = ({ options, onCheckAnswer }) => {
   const { selectedAnswer, isSelectedAnswerCorrect } = useSelector(
-    (state: IRootState) => state.game
+    (state: RootState) => state.game
   )
-
-  const handleOptionClick = (id: number) => {
-    onCheckAnswer(id)
-  }
 
   return (
     <div className={styles.optionsList}>
@@ -29,9 +25,8 @@ const OptionsList: FC<Props> = ({ options, onCheckAnswer }) => {
         return (
           <OptionItem
             optionLetter={optionLetters[index]}
-            onClick={handleOptionClick}
+            onClick={onCheckAnswer}
             key={option.text}
-            // key={`${currentQuestionIndex}${option.id}`}
             option={option}
             isSelected={isSelected}
             isCorrect={isSelected ? isCorrect : undefined}

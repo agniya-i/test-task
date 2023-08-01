@@ -1,7 +1,7 @@
 import React from 'react'
 import { useDispatch } from 'react-redux'
 import styles from './Main.module.scss'
-import pageImage from '../../assets/page-image.png'
+import pageImage from '../../assets/PageImage.png'
 import Button from '../../components/Button'
 import { startGame } from '../../store/slices/gameInit'
 
