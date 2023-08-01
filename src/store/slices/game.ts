@@ -32,7 +32,7 @@ const gameSlice = createSlice({
         availableRewards.push(i * 500)
       }
       state.scoreRewards = availableRewards
-      state.currentQuestionIndex = 11
+      state.currentQuestionIndex = 0
     },
     fetchQuestionsFail(state, action) {
       state.error = action.payload
