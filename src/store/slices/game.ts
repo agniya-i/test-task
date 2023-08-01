@@ -1,7 +1,6 @@
 /* eslint-disable no-promise-executor-return */
 /* eslint-disable no-param-reassign */
 import { Dispatch, createSlice } from '@reduxjs/toolkit'
-import AnswerOption from '../../types/AnswerOption'
 import Question from '../../types/Question'
 
 type GameState = {
@@ -28,11 +27,12 @@ const gameSlice = createSlice({
   reducers: {
     fetchQuestionsSuccess(state, action) {
       state.questions = action.payload
-      const availableRewards = action.payload.map(
-        (item: AnswerOption, index: number) => (index + 1) * 500
-      )
+      const availableRewards = []
+      for (let i = 0; i < action.payload.length + 1; i += 1) {
+        availableRewards.push(i * 500)
+      }
       state.scoreRewards = availableRewards
-      state.currentQuestionIndex = 0
+      state.currentQuestionIndex = 11
     },
     fetchQuestionsFail(state, action) {
       state.error = action.payload

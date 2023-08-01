@@ -29,7 +29,7 @@ const ScoreTable: FC<Props> = ({ scoreRewards, className }) => {
       </div>
       <div className={styles.scoreTableListContainer}>
         <div className={styles.scoreTableList}>
-          {scoreRewards.map((item, index) => (
+          {scoreRewards.slice(1).map((item, index) => (
             <ScoreItem key={item} index={index} label={item} />
           ))}
         </div>
