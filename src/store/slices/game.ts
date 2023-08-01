@@ -69,13 +69,13 @@ export const {
   failGame,
 } = gameSlice.actions
 
-const delay = new Promise((resolve) => setTimeout(resolve, 500))
+const delay = () => new Promise((resolve) => setTimeout(resolve, 500))
 
 export const answerAndCheck =
   (params: { id: number }) => async (dispatch: Dispatch<any>) => {
     dispatch(answerQuestion({ id: params.id }))
 
-    await delay
+    await delay()
 
     return dispatch(checkCorrectAnswer({ id: params.id }))
   }
