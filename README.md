@@ -1,8 +1,8 @@
 # Millionaire Quiz Game
 
-This is a simple React Quiz Game made with React and Redux
+Simple React Quiz Game made with React and Redux
 
-DEMO LINK: https://agniya-i.github.io/test-task/
+📍 DEMO LINK: https://agniya-i.github.io/test-task/
 
 #### Setup
 
@@ -15,4 +15,4 @@ To run development version please use `npm run dev` command. Server will start o
 
 #### Deploy
 
-To deploy the project please use `npm run deploy` command. Access the project via the link https://<\user-name\>.github.io/<\repo-name\>/
+To deploy the project please use `npm run deploy` command. Access the project via the link `https://<user-name>.github.io/<repo-name>/`
